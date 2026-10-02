@@ -391,29 +391,39 @@
         }
         return updated;
     }
-
-    function loadData() {
-        const stored = localStorage.getItem('recruit_companies');
-        if (stored) {
-            try { companies = JSON.parse(stored); } catch (_) { companies = []; }
-        }
-        if (!companies || companies.length === 0) {
-            companies = getSampleData();
-            saveToStorage();
-        }
-        companies = companies.filter(c => c && typeof c === 'object').map(c => {
-            if (!c.id) c.id = Date.now() + Math.random().toString(36).slice(2, 7);
-            return c;
+    async function loadData() {
+    try {
+        const response = await fetch('./data/recruitment.json', {
+            cache: 'no-store'
         });
-        // 自动更新状态
+
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+
+        companies = await response.json();
+
+        if (!Array.isArray(companies)) {
+            throw new Error('招聘数据不是有效的数组');
+        }
+
         autoUpdateStatus();
-        saveToStorage();
-    }
+        renderTable();
 
-    function saveToStorage() {
-        localStorage.setItem('recruit_companies', JSON.stringify(companies));
+    } catch (error) {
+        console.error('招聘数据加载失败：', error);
+        companies = [];
+        alert('招聘数据加载失败，请稍后刷新页面。');
+        renderTable();
     }
+}
 
+// 暂时保留这个函数，避免现有代码报错。
+// 现在所有正式数据都来自 recruitment.json，不再写入浏览器。
+function saveToStorage() {
+    // 不做任何操作
+}
+   
     // 示例数据（包含附件字段，但示例中无实际附件）
     function getSampleData() {
         const now = new Date();
@@ -824,7 +834,7 @@
     //  启动
     // ============================================================
     loadData();
-    renderTable();
+
 </script>
 
 
