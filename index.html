@@ -729,80 +729,122 @@ function saveToStorage() {
 
     // ============================================================
 
-// 附件展示：图片直接预览，PDF / Word 等显示下载按钮
+    // ============================================================
+// 查看详情
 // ============================================================
-if (c.attachment && c.attachment.length > 0) {
+function showDetail(id) {
+    const c = companies.find(item => item.id === id);
+    if (!c) return;
 
-    const fileName = c.attachmentName || '附件';
-    const fileUrl = c.attachment;
+    const fields = [
+        { label: '单位名称', value: c.name },
+        { label: '状态', value: getStatusLabel(c.status) },
+        { label: '宣讲时间', value: formatTime(c.lectureTime) },
+        { label: '宣讲地点', value: c.lectureLocation || '-' },
+        { label: '面向对象', value: c.targetAudience || '-' },
+        { label: '开放岗位', value: c.job || '-' },
+        { label: '需求专业', value: c.majors || '-' },
+        { label: '公司简介', value: c.companyDesc || '-' },
+        { label: '福利待遇', value: c.benefits || '-' },
+        { label: '特殊人才计划', value: c.specialPlan || '-' },
+        { label: '联系方式', value: c.contact || '-' },
+        { label: '投递方式', value: c.applyWay || '-' },
+        { label: '备注', value: c.note || '-' }
+    ];
 
-    // 去掉 URL 参数后判断文件扩展名
-    const cleanUrl = fileUrl.split('?')[0].split('#')[0].toLowerCase();
+    let html = fields.map(f => `
+        <div class="detail-item">
+            <span class="label">${f.label}</span>
+            <span class="value">${escHtml(f.value)}</span>
+        </div>
+    `).join('');
 
-    const isImage = /\.(jpg|jpeg|png|gif|webp|bmp|svg)$/i.test(cleanUrl);
+    // ============================================================
+    // 附件：图片直接预览，PDF / Word 等显示下载按钮
+    // ============================================================
+    if (c.attachment && c.attachment.length > 0) {
 
-    if (isImage) {
+        const fileName = c.attachmentName || '附件';
+        const fileUrl = c.attachment;
 
-        // 图片：直接在详情页预览
-        html += `
-            <div class="detail-item">
-                <span class="label">招聘图片</span>
-                <span class="value">
-                    <a href="${fileUrl}" target="_blank" title="点击查看原图">
-                        <img
-                            src="${fileUrl}"
-                            alt="${escHtml(fileName)}"
-                            style="
-                                display:block;
-                                max-width:100%;
-                                max-height:520px;
-                                object-fit:contain;
-                                border-radius:12px;
-                                border:1px solid #e2e8f0;
-                                margin-top:6px;
-                            "
+        const cleanUrl = fileUrl
+            .split('?')[0]
+            .split('#')[0]
+            .toLowerCase();
+
+        const isImage =
+            /\.(jpg|jpeg|png|gif|webp|bmp|svg)$/i.test(cleanUrl);
+
+        if (isImage) {
+
+            html += `
+                <div class="detail-item">
+                    <span class="label">招聘图片</span>
+
+                    <span class="value">
+                        <a href="${fileUrl}"
+                           target="_blank"
+                           title="点击查看原图">
+
+                            <img
+                                src="${fileUrl}"
+                                alt="${escHtml(fileName)}"
+                                style="
+                                    display:block;
+                                    width:auto;
+                                    max-width:100%;
+                                    max-height:520px;
+                                    object-fit:contain;
+                                    border-radius:12px;
+                                    border:1px solid #e2e8f0;
+                                    margin-top:6px;
+                                "
+                            >
+                        </a>
+
+                        <div style="
+                            margin-top:8px;
+                            font-size:12px;
+                            color:#64748b;
+                        ">
+                            ${escHtml(fileName)} · 点击图片查看原图
+                        </div>
+                    </span>
+                </div>
+            `;
+
+        } else {
+
+            html += `
+                <div class="detail-item">
+                    <span class="label">附件</span>
+
+                    <span class="value">
+                        <a
+                            href="${fileUrl}"
+                            download="${escHtml(fileName)}"
+                            class="btn btn-attachment btn-sm"
                         >
-                    </a>
-
-                    <div style="
-                        margin-top:8px;
-                        font-size:12px;
-                        color:#64748b;
-                    ">
-                        ${escHtml(fileName)} · 点击图片查看原图
-                    </div>
-                </span>
-            </div>
-        `;
+                            <i class="fas fa-download"></i>
+                            下载 ${escHtml(fileName)}
+                        </a>
+                    </span>
+                </div>
+            `;
+        }
 
     } else {
 
-        // PDF / Word / 其他附件：显示下载按钮
         html += `
             <div class="detail-item">
                 <span class="label">附件</span>
-                <span class="value">
-                    <a
-                        href="${fileUrl}"
-                        download="${escHtml(fileName)}"
-                        class="btn btn-attachment btn-sm"
-                    >
-                        <i class="fas fa-download"></i>
-                        下载 ${escHtml(fileName)}
-                    </a>
-                </span>
+                <span class="value">无</span>
             </div>
         `;
     }
 
-} else {
-
-    html += `
-        <div class="detail-item">
-            <span class="label">附件</span>
-            <span class="value">无</span>
-        </div>
-    `;
+    document.getElementById('detailContent').innerHTML = html;
+    document.getElementById('detailOverlay').classList.add('active');
 }
 
     // ============================================================
