@@ -1,43 +1,830 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TMGCJY</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f7fa;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
+<!-- saved from url=(0065)file:///C:/Users/02210/Desktop/deepseek_html_20260908_805ad5.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>招聘宣讲会信息统计（含附件）</title>
+    <link rel="stylesheet" href="./all.min.css">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Segoe UI',Roboto,sans-serif; background:#f4f7fc; padding:30px 20px; color:#1e293b; }
+        .container { max-width:1500px; margin:0 auto; }
+        .header { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; margin-bottom:28px; gap:16px; }
+        .header h1 { font-size:28px; font-weight:700; display:flex; align-items:center; gap:10px; background:linear-gradient(135deg,#0f3b5e,#1a6b8a); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .header h1 i { background:#0f3b5e; color:#fff; padding:8px 12px; border-radius:12px; font-size:22px; -webkit-text-fill-color:#fff; }
+        .header-actions { display:flex; gap:12px; flex-wrap:wrap; }
+        .btn { display:inline-flex; align-items:center; gap:8px; padding:10px 22px; border:none; border-radius:10px; font-weight:600; font-size:14px; cursor:pointer; transition:all 0.2s; background:#fff; color:#1e293b; border:1px solid #e2e8f0; }
+        .btn-primary { background:#0f3b5e; color:#fff; border-color:#0f3b5e; }
+        .btn-primary:hover { background:#1a4f72; transform:translateY(-1px); box-shadow:0 8px 18px rgba(15,59,94,0.25); }
+        .btn-success { background:#0b7e4b; color:#fff; border-color:#0b7e4b; }
+        .btn-success:hover { background:#0e9a5e; }
+        .btn-danger { background:#b91c1c; color:#fff; border-color:#b91c1c; }
+        .btn-danger:hover { background:#d42a2a; }
+        .btn-outline { background:transparent; border:1px solid #cbd5e1; }
+        .btn-outline:hover { background:#f1f5f9; }
+        .btn-sm { padding:6px 14px; font-size:12px; border-radius:8px; }
+        .btn-info { background:#0891b2; color:#fff; border-color:#0891b2; }
+        .btn-info:hover { background:#0e7490; }
+        .btn-attachment { background:#8b5cf6; color:#fff; border-color:#8b5cf6; }
+        .btn-attachment:hover { background:#7c3aed; }
 
-    .card {
-      background: white;
-      padding: 50px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      text-align: center;
-    }
+        .stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:18px; margin-bottom:30px; }
+        .stat-card { background:#fff; padding:18px 22px; border-radius:16px; border:1px solid #eef2f6; display:flex; align-items:center; gap:16px; }
+        .stat-icon { width:48px; height:48px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:22px; color:#fff; flex-shrink:0; }
+        .stat-icon.blue { background:#2563eb; }
+        .stat-icon.orange { background:#ea580c; }
+        .stat-icon.green { background:#16a34a; }
+        .stat-info h3 { font-size:26px; font-weight:700; line-height:1.2; }
+        .stat-info p { font-size:13px; color:#64748b; font-weight:500; }
 
-    h1 {
-      font-size: 36px;
-      margin-bottom: 15px;
-    }
+        .toolbar { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:14px; margin-bottom:20px; background:#fff; padding:14px 22px; border-radius:16px; border:1px solid #eef2f6; }
+        .toolbar .search-box { display:flex; align-items:center; gap:10px; flex:1 1 280px; }
+        .toolbar .search-box input { flex:1; padding:9px 16px; border:1px solid #d1d9e6; border-radius:10px; font-size:14px; outline:none; background:#fafcff; }
+        .toolbar .search-box input:focus { border-color:#0f3b5e; box-shadow:0 0 0 3px rgba(15,59,94,0.12); }
+        .toolbar .filter-group { display:flex; gap:10px; flex-wrap:wrap; }
+        .toolbar .filter-group select { padding:9px 16px; border:1px solid #d1d9e6; border-radius:10px; font-size:14px; background:#fafcff; outline:none; cursor:pointer; }
 
-    p {
-      color: #666;
-    }
-  </style>
+        .table-wrapper { background:#fff; border-radius:16px; border:1px solid #eef2f6; overflow-x:auto; box-shadow:0 4px 12px rgba(0,0,0,0.02); margin-bottom:30px; }
+        table { width:100%; border-collapse:collapse; font-size:14px; min-width:950px; }
+        thead { background:#f8fafc; border-bottom:2px solid #e2e8f0; }
+        thead th { padding:14px 16px; text-align:left; font-weight:600; color:#334155; font-size:13px; letter-spacing:0.3px; text-transform:uppercase; white-space:nowrap; }
+        tbody tr { border-bottom:1px solid #f1f5f9; transition:background 0.15s; }
+        tbody tr:hover { background:#fafcff; }
+        tbody td { padding:12px 16px; vertical-align:middle; }
+        .company-name { font-weight:600; color:#0f3b5e; }
+        .badge { display:inline-block; padding:4px 12px; border-radius:30px; font-size:12px; font-weight:600; background:#eef2f6; color:#334155; }
+        .badge.success { background:#d1fae5; color:#065f46; }
+        .badge.warning { background:#fef3c7; color:#92400e; }
+        .badge.danger { background:#fee2e2; color:#991b1b; }
+        .time-chip { display:inline-flex; align-items:center; gap:5px; background:#f1f5f9; padding:3px 12px 3px 8px; border-radius:30px; font-size:13px; font-weight:500; color:#1e293b; margin:2px 4px 2px 0; white-space:nowrap; }
+        .time-chip i { font-size:12px; color:#64748b; }
+        .action-btns { display:flex; gap:6px; flex-wrap:wrap; }
+        .action-btns .btn { padding:5px 12px; font-size:12px; border-radius:8px; }
+        .empty-state { text-align:center; padding:60px 20px; color:#94a3b8; }
+        .empty-state i { font-size:48px; margin-bottom:16px; opacity:0.5; }
+        .attachment-icon { color:#8b5cf6; font-size:16px; margin-right:4px; }
+
+        .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.35); backdrop-filter:blur(4px); align-items:center; justify-content:center; z-index:999; padding:20px; }
+        .modal-overlay.active { display:flex; }
+        .modal { background:#fff; border-radius:20px; max-width:720px; width:100%; padding:32px 34px; box-shadow:0 30px 60px rgba(0,0,0,0.2); animation:modalIn 0.25s ease; max-height:90vh; overflow-y:auto; }
+        @keyframes modalIn { from { opacity:0; transform:translateY(30px) scale(0.97); } to { opacity:1; transform:translateY(0) scale(1); } }
+        .modal h2 { font-size:22px; font-weight:700; margin-bottom:6px; display:flex; align-items:center; gap:10px; }
+        .modal .sub { color:#64748b; font-size:14px; margin-bottom:24px; }
+        .form-group { margin-bottom:16px; }
+        .form-group label { display:block; font-weight:600; font-size:13px; margin-bottom:4px; color:#334155; }
+        .form-group label .required { color:#b91c1c; margin-left:2px; }
+        .form-group input, .form-group select, .form-group textarea { width:100%; padding:10px 14px; border:1px solid #d1d9e6; border-radius:10px; font-size:14px; font-family:inherit; transition:0.2s; background:#fafcff; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color:#0f3b5e; box-shadow:0 0 0 3px rgba(15,59,94,0.1); outline:none; }
+        .form-group textarea { resize:vertical; min-height:56px; }
+        .form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+        .form-section { background:#f8fafc; padding:14px 16px; border-radius:12px; margin-bottom:16px; border-left:4px solid #0f3b5e; }
+        .form-section h4 { font-size:15px; font-weight:600; margin-bottom:10px; color:#0f3b5e; }
+        .modal-footer { display:flex; justify-content:flex-end; gap:12px; margin-top:24px; padding-top:16px; border-top:1px solid #eef2f6; }
+        .file-input-wrapper { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+        .file-input-wrapper input[type="file"] { flex:1; padding:8px 0; }
+        .file-name { font-size:13px; color:#475569; background:#f1f5f9; padding:4px 12px; border-radius:20px; }
+
+        .detail-item { display:flex; padding:6px 0; border-bottom:1px solid #f1f5f9; }
+        .detail-item .label { font-weight:600; width:120px; flex-shrink:0; color:#475569; }
+        .detail-item .value { flex:1; color:#1e293b; }
+
+        .timeline-section { background:#fff; border-radius:16px; border:1px solid #eef2f6; padding:20px 24px 24px; margin-top:10px; }
+        .timeline-section .section-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; flex-wrap:wrap; gap:10px; }
+        .timeline-section .section-header h3 { font-size:18px; font-weight:700; display:flex; align-items:center; gap:8px; }
+        .timeline { display:flex; flex-direction:column; gap:12px; }
+        .timeline-item { display:flex; align-items:center; gap:16px; background:#f8fafc; padding:12px 18px; border-radius:12px; border-left:4px solid #0f3b5e; flex-wrap:wrap; }
+        .timeline-item .time { font-weight:700; color:#0f3b5e; min-width:130px; font-size:14px; }
+        .timeline-item .info { flex:1; font-weight:500; }
+        .timeline-item .info .company-tag { font-weight:600; color:#1e293b; }
+        .timeline-item .status-badge { font-size:12px; }
+        .no-timeline { color:#94a3b8; text-align:center; padding:24px 0; font-size:15px; }
+
+        @media (max-width:768px) { .form-row { grid-template-columns:1fr; } .modal { padding:24px 20px; } .toolbar { flex-direction:column; align-items:stretch; } .toolbar .filter-group { justify-content:stretch; } }
+        ::-webkit-scrollbar { width:6px; height:6px; }
+        ::-webkit-scrollbar-track { background:#f1f5f9; border-radius:10px; }
+        ::-webkit-scrollbar-thumb { background:#cbd5e1; border-radius:10px; }
+        ::-webkit-scrollbar-thumb:hover { background:#94a3b8; }
+    </style>
 </head>
-
 <body>
-  <div class="card">
-    <h1>TMGCJY</h1>
-    <p>Hello!雷顺杰，你好啊！我的第一个 Cloudflare 网站已经上线。</p>
-  </div>
-</body>
-</html>
+
+<div class="container" id="app">
+    <div class="header">
+        <h1><i class="fas fa-calendar-alt"></i> 招聘宣讲会信息统计</h1>
+        <div class="header-actions">
+            <button class="btn btn-primary" onclick="openAddModal()"><i class="fas fa-plus-circle"></i> 新增宣讲</button>
+            <button class="btn btn-outline" onclick="exportData()"><i class="fas fa-download"></i> 导出 JSON</button>
+            <button class="btn btn-outline" onclick="document.getElementById(&#39;importInput&#39;).click()"><i class="fas fa-upload"></i> 导入</button>
+            <input type="file" id="importInput" accept=".json" style="display:none" onchange="importData(event)">
+        </div>
+    </div>
+
+    <!-- 统计卡片 -->
+    <div class="stats-grid">
+        <div class="stat-card"><div class="stat-icon blue"><i class="fas fa-building"></i></div><div class="stat-info"><h3 id="statCompanies">6</h3><p>招聘单位</p></div></div>
+        <div class="stat-card"><div class="stat-icon orange"><i class="fas fa-clock"></i></div><div class="stat-info"><h3 id="statEvents">6</h3><p>宣讲场次</p></div></div>
+        <div class="stat-card"><div class="stat-icon green"><i class="fas fa-calendar-check"></i></div><div class="stat-info"><h3 id="statUpcoming">5</h3><p>即将宣讲</p></div></div>
+    </div>
+
+    <!-- 工具栏 -->
+    <div class="toolbar">
+        <div class="search-box"><i class="fas fa-search" style="color:#94a3b8;"></i><input type="text" id="searchInput" placeholder="搜索单位、岗位、地点..." oninput="renderTable()"></div>
+        <div class="filter-group">
+            <select id="filterStatus" onchange="renderTable()">
+                <option value="">全部状态</option>
+                <option value="active">招聘中</option>
+                <option value="closed">已结束</option>
+                <option value="upcoming">即将开始</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- 表格（增加附件列） -->
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th style="min-width:130px;">单位名称</th>
+                    <th style="min-width:150px;">宣讲时间</th>
+                    <th style="min-width:150px;">宣讲地点</th>
+                    <th style="min-width:150px;">开放岗位</th>
+                    <th style="min-width:60px;">附件</th>
+                    <th style="min-width:90px;">状态</th>
+                    <th style="min-width:170px;">操作</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                    <tr data-id="1788857642374ltd6h">
+                        <td><span class="company-name">2026-2027年度空军直接选拔招录军官宣介会</span></td>
+                        <td><span class="time-chip"><i class="far fa-calendar-alt"></i> 9月20日 10:00</span></td>
+                        <td>九龙湖校区 大学生活动中心324室</td>
+                        <td>--</td>
+                        <td>-</td>
+                        <td><span class="badge success">招聘中</span></td>
+                        <td>
+                            <div class="action-btns">
+                                <button class="btn btn-primary btn-sm" onclick="editCompany(&#39;1788857642374ltd6h&#39;)"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-info btn-sm" onclick="showDetail(&#39;1788857642374ltd6h&#39;)"><i class="fas fa-eye"></i></button>
+                                <button class="btn btn-danger btn-sm" onclick="deleteCompany(&#39;1788857642374ltd6h&#39;)"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr data-id="1788858003224tm19n">
+                        <td><span class="company-name">华为供应链2027届校招专场</span></td>
+                        <td><span class="time-chip"><i class="far fa-calendar-alt"></i> 9月11日 16:00</span></td>
+                        <td>东南大学（九龙湖校区）教二-207</td>
+                        <td>计划｜采购｜订单｜物流｜AI应用等多岗位齐开放，业务遍及全球170+国家，AI深度赋能供应链全链路，从供需计划到全球交付，从产业链协同到AI智能化落地，广阔赛道任你选择。</td>
+                        <td><i class="fas fa-paperclip attachment-icon" title="有附件"></i></td>
+                        <td><span class="badge success">招聘中</span></td>
+                        <td>
+                            <div class="action-btns">
+                                <button class="btn btn-primary btn-sm" onclick="editCompany(&#39;1788858003224tm19n&#39;)"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-info btn-sm" onclick="showDetail(&#39;1788858003224tm19n&#39;)"><i class="fas fa-eye"></i></button>
+                                <button class="btn btn-danger btn-sm" onclick="deleteCompany(&#39;1788858003224tm19n&#39;)"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr data-id="1788857541369oqbzp">
+                        <td><span class="company-name">小米集团2027届全球校园招聘宣讲【东南大学】专场</span></td>
+                        <td><span class="time-chip"><i class="far fa-calendar-alt"></i> 9月9日 19:00</span></td>
+                        <td>东南大学 九龙湖校区-教一-311</td>
+                        <td>软件研发类，硬件研发类，算法类，芯片类，产品类，市场类，职能类等</td>
+                        <td>-</td>
+                        <td><span class="badge success">招聘中</span></td>
+                        <td>
+                            <div class="action-btns">
+                                <button class="btn btn-primary btn-sm" onclick="editCompany(&#39;1788857541369oqbzp&#39;)"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-info btn-sm" onclick="showDetail(&#39;1788857541369oqbzp&#39;)"><i class="fas fa-eye"></i></button>
+                                <button class="btn btn-danger btn-sm" onclick="deleteCompany(&#39;1788857541369oqbzp&#39;)"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr data-id="1788858363754lgzl9">
+                        <td><span class="company-name">中国建筑 · 中建三局科创公司2027届校园招聘</span></td>
+                        <td><span class="time-chip"><i class="far fa-calendar-alt"></i> 9月9日 02:00</span></td>
+                        <td>---</td>
+                        <td>智能建造、土木工程类、工程管理类、安全管理、人力资源管理类</td>
+                        <td><i class="fas fa-paperclip attachment-icon" title="有附件"></i></td>
+                        <td><span class="badge success">招聘中</span></td>
+                        <td>
+                            <div class="action-btns">
+                                <button class="btn btn-primary btn-sm" onclick="editCompany(&#39;1788858363754lgzl9&#39;)"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-info btn-sm" onclick="showDetail(&#39;1788858363754lgzl9&#39;)"><i class="fas fa-eye"></i></button>
+                                <button class="btn btn-danger btn-sm" onclick="deleteCompany(&#39;1788858363754lgzl9&#39;)"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr data-id="1788857881548dkxco">
+                        <td><span class="company-name">中建八局三公司2026届校园招聘会</span></td>
+                        <td><span class="time-chip"><i class="far fa-calendar-alt"></i> 9月8日 19:00</span></td>
+                        <td>九龙湖校区教一-202</td>
+                        <td>1.土木工程类、基础设施类、科创产业岗、机电安装类、投资运营岗、数字建造岗、职能管理类（人力资源/行政/财务/法务等）； 2.⭐️管培生：重点985院校硕士及以上学历</td>
+                        <td>-</td>
+                        <td><span class="badge success">招聘中</span></td>
+                        <td>
+                            <div class="action-btns">
+                                <button class="btn btn-primary btn-sm" onclick="editCompany(&#39;1788857881548dkxco&#39;)"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-info btn-sm" onclick="showDetail(&#39;1788857881548dkxco&#39;)"><i class="fas fa-eye"></i></button>
+                                <button class="btn btn-danger btn-sm" onclick="deleteCompany(&#39;1788857881548dkxco&#39;)"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr data-id="1788858037252fvdlt">
+                        <td><span class="company-name">中建三局2027届校园招聘</span></td>
+                        <td><span class="time-chip"><i class="far fa-calendar-alt"></i> 9月7日 18:00</span></td>
+                        <td>九龙湖校区-教三-102</td>
+                        <td>高端房建、基础设施、投资开发等</td>
+                        <td>-</td>
+                        <td><span class="badge danger">已结束</span></td>
+                        <td>
+                            <div class="action-btns">
+                                <button class="btn btn-primary btn-sm" onclick="editCompany(&#39;1788858037252fvdlt&#39;)"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-info btn-sm" onclick="showDetail(&#39;1788858037252fvdlt&#39;)"><i class="fas fa-eye"></i></button>
+                                <button class="btn btn-danger btn-sm" onclick="deleteCompany(&#39;1788858037252fvdlt&#39;)"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+        </table>
+    </div>
+
+    <!-- 时间线 -->
+    <div class="timeline-section">
+        <div class="section-header"><h3><i class="fas fa-stream" style="color:#0f3b5e;"></i> 宣讲时间线（最近3场）</h3><span style="font-size:13px;color:#64748b;">按时间排序</span></div>
+        <div class="timeline" id="timelineContainer">
+                <div class="timeline-item" style="opacity:0.7;">
+                    <span class="time"><i class="far fa-clock"></i> 9月7日 18:00</span>
+                    <span class="info">
+                        <span class="company-tag">中建三局2027届校园招聘</span>
+                        &nbsp;·&nbsp; 高端房建、基础设施、投资开发等
+                        &nbsp;<span style="color:#64748b;">@九龙湖校区-教三-102</span>
+                    </span>
+                    <span class="badge danger status-badge">已结束</span>
+                </div>
+            
+                <div class="timeline-item" style="">
+                    <span class="time"><i class="far fa-clock"></i> 9月8日 19:00</span>
+                    <span class="info">
+                        <span class="company-tag">中建八局三公司2026届校园招聘会</span>
+                        &nbsp;·&nbsp; 1.土木工程类、基础设施类、科创产业岗、机电安装类、投资运营岗、数字建造岗、职能管理类（人力资源/行政/财务/法务等）； 2.⭐️管培生：重点985院校硕士及以上学历
+                        &nbsp;<span style="color:#64748b;">@九龙湖校区教一-202</span>
+                    </span>
+                    <span class="badge success status-badge">招聘中</span>
+                </div>
+            
+                <div class="timeline-item" style="">
+                    <span class="time"><i class="far fa-clock"></i> 9月9日 02:00</span>
+                    <span class="info">
+                        <span class="company-tag">中国建筑 · 中建三局科创公司2027届校园招聘</span>
+                        &nbsp;·&nbsp; 智能建造、土木工程类、工程管理类、安全管理、人力资源管理类
+                        &nbsp;<span style="color:#64748b;">@---</span>
+                    </span>
+                    <span class="badge success status-badge">招聘中</span>
+                </div>
+            </div>
+    </div>
+</div>
+
+<!-- ===== 新增/编辑模态框（含附件） ===== -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+        <h2 id="modalTitle"><i class="fas fa-plus-circle"></i> 新增宣讲信息</h2>
+        <div class="sub" id="modalSub">填写单位招聘与宣讲详情</div>
+        <form id="companyForm" onsubmit="saveCompany(event)">
+            <input type="hidden" id="editId" value="">
+
+            <div class="form-section"><h4><i class="fas fa-building"></i> 基本信息</h4>
+                <div class="form-group"><label>单位名称 <span class="required">*</span></label><input type="text" id="fName" placeholder="如：中建一局" required=""></div>
+                <div class="form-group"><label>状态 <span class="required">*</span></label>
+                    <select id="fStatus" required="">
+                        <option value="active">招聘中</option>
+                        <option value="upcoming">即将开始</option>
+                        <option value="closed">已结束</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-section"><h4><i class="fas fa-calendar-alt"></i> 宣讲详情</h4>
+                <div class="form-row">
+                    <div class="form-group"><label>宣讲时间 <span class="required">*</span></label><input type="datetime-local" id="fTime" required=""></div>
+                    <div class="form-group"><label>宣讲地点 <span class="required">*</span></label><input type="text" id="fLocation" placeholder="如：九龙湖校区教一204" required=""></div>
+                </div>
+                <div class="form-group"><label>面向对象</label><input type="text" id="fTarget" placeholder="如：2027届本硕博毕业生"></div>
+            </div>
+
+            <div class="form-section"><h4><i class="fas fa-briefcase"></i> 招聘岗位</h4>
+                <div class="form-group"><label>开放岗位 <span class="required">*</span></label><input type="text" id="fJob" placeholder="多个岗位用逗号分隔，如：技术管理,商务管理" required=""></div>
+                <div class="form-group"><label>需求专业</label><input type="text" id="fMajors" placeholder="如：土木工程,工程管理,机电"></div>
+            </div>
+
+            <div class="form-section"><h4><i class="fas fa-gem"></i> 福利 &amp; 公司简介</h4>
+                <div class="form-group"><label>公司简介</label><textarea id="fDesc" rows="2" placeholder="简要介绍公司背景、业务等"></textarea></div>
+                <div class="form-group"><label>福利待遇</label><textarea id="fBenefits" rows="2" placeholder="如：六险二金、年薪20w+、落户支持"></textarea></div>
+                <div class="form-group"><label>特殊人才计划</label><textarea id="fSpecial" rows="2" placeholder="如：顶尖生计划、强狮计划"></textarea></div>
+            </div>
+
+            <div class="form-section"><h4><i class="fas fa-phone-alt"></i> 联系 &amp; 投递</h4>
+                <div class="form-group"><label>联系方式</label><input type="text" id="fContact" placeholder="如：邵钰棋 13656176116"></div>
+                <div class="form-group"><label>投递方式</label><textarea id="fApply" rows="2" placeholder="如：现场投递、官网投递、扫码投递等"></textarea></div>
+            </div>
+
+            <!-- 附件上传（非必填） -->
+            <div class="form-section"><h4><i class="fas fa-paperclip"></i> 附件</h4>
+                <div class="form-group">
+                    <label>上传附件 (Word/PDF/图片，非必填)</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="fAttachment" accept=".doc,.docx,.pdf,.png,.jpg,.jpeg,.gif">
+                        <span class="file-name" id="attachmentFileName">未选择文件</span>
+                    </div>
+                    <div style="font-size:12px;color:#64748b;margin-top:4px;">支持 .doc, .docx, .pdf, .png, .jpg, .jpeg, .gif</div>
+                </div>
+            </div>
+
+            <div class="form-group"><label>备注</label><textarea id="fNote" rows="2" placeholder="其他补充信息"></textarea></div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" onclick="closeModal()">取消</button>
+                <button type="submit" class="btn btn-primary" id="submitBtn"><i class="fas fa-save"></i> 保存</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- ===== 详情模态框（含附件下载） ===== -->
+<div class="modal-overlay" id="detailOverlay">
+    <div class="modal" style="max-width:650px;">
+        <h2><i class="fas fa-info-circle"></i> 宣讲详情</h2>
+        <div id="detailContent" style="margin-top:16px;"></div>
+        <div class="modal-footer">
+            <button class="btn btn-outline" onclick="document.getElementById(&#39;detailOverlay&#39;).classList.remove(&#39;active&#39;)">关闭</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ============================================================
+    //  数据层（无行业、无招聘人数，含附件）
+    // ============================================================
+    let companies = [];
+
+    // 自动更新状态：如果宣讲时间已过，且状态不是 closed，则改为 closed
+    function autoUpdateStatus() {
+        const now = new Date();
+        let updated = false;
+        companies.forEach(c => {
+            if (c.lectureTime) {
+                const lectureDate = new Date(c.lectureTime);
+                if (lectureDate < now && c.status !== 'closed') {
+                    c.status = 'closed';
+                    updated = true;
+                }
+            }
+        });
+        if (updated) {
+            saveToStorage();
+        }
+        return updated;
+    }
+
+    function loadData() {
+        const stored = localStorage.getItem('recruit_companies');
+        if (stored) {
+            try { companies = JSON.parse(stored); } catch (_) { companies = []; }
+        }
+        if (!companies || companies.length === 0) {
+            companies = getSampleData();
+            saveToStorage();
+        }
+        companies = companies.filter(c => c && typeof c === 'object').map(c => {
+            if (!c.id) c.id = Date.now() + Math.random().toString(36).slice(2, 7);
+            return c;
+        });
+        // 自动更新状态
+        autoUpdateStatus();
+        saveToStorage();
+    }
+
+    function saveToStorage() {
+        localStorage.setItem('recruit_companies', JSON.stringify(companies));
+    }
+
+    // 示例数据（包含附件字段，但示例中无实际附件）
+    function getSampleData() {
+        const now = new Date();
+        const fmt = (d) => new Date(d).toISOString().slice(0, 16);
+        return [{
+            id: 's1',
+            name: '中建一局建设发展公司',
+            job: '技术管理,商务管理,项目管理,机电管理,职能支持',
+            lectureTime: fmt(now.getTime() + 1 * 24 * 60 * 60 * 1000 + 14 * 60 * 60 * 1000),
+            lectureLocation: '九龙湖校区教一204',
+            targetAudience: '2027届本硕博毕业生',
+            benefits: '央企正式编制，六险二金，行业优势薪酬，北上广深落户支持，本科双通道晋升，硕博专项培养',
+            companyDesc: '中建集团十大号码公司之一，承建国家地标工程，业务覆盖投资、设计、工程建设、运营及新兴业务。',
+            majors: '土木工程,工程管理,机电,财务,行政,人力',
+            contact: '邵钰棋 13656176116（微信同号，备注“东大+姓名”）',
+            applyWay: '现场直面HR，简历直投；官网：https://www.chinaonebuild.com/',
+            specialPlan: '“顶尖生”计划（年薪20w+）、“强狮”计划（海外管理领军）',
+            status: 'upcoming',
+            note: '专场宣讲会倒计时1天',
+            attachment: null, // 无附件
+            attachmentName: null
+        }, {
+            id: 's2',
+            name: '中兴通讯',
+            job: '研发,市场,供应链,职能',
+            lectureTime: fmt(now.getTime() + 1 * 24 * 60 * 60 * 1000 + 14.5 * 60 * 60 * 1000),
+            lectureLocation: '九龙湖校区纪忠楼报告厅',
+            targetAudience: '2027届本硕博毕业生',
+            benefits: '行业竞争力薪酬，五险一金，补充商业保险，住房补贴',
+            companyDesc: '全球领先的综合通信解决方案提供商，为全球运营商及企业客户提供创新技术解决方案。',
+            majors: '通信,计算机,电子,自动化,经管,外语',
+            contact: '详见招聘海报',
+            applyWay: '现场投递纸质简历，扫码预报名，官网：https://www.zte.com.cn/',
+            specialPlan: '“蓝剑计划”等精英培养',
+            status: 'active',
+            note: '东南大学专场双选会',
+            attachment: null,
+            attachmentName: null
+        }, {
+            id: 's3',
+            name: '中建三局科创公司',
+            job: '智能建造,土木工程,工程管理,安全管理,人力资源',
+            lectureTime: fmt(now.getTime() - 1 * 24 * 60 * 60 * 1000 + 18 * 60 * 60 * 1000),
+            lectureLocation: '九龙湖校区教三102',
+            targetAudience: '应届本科、硕士、博士生',
+            benefits: '行业竞争力薪酬，面议，五险一金，央企平台',
+            companyDesc: '中建三局建筑工业化投资、建造、科研专业化平台，国内头部智能建造全链条服务企业。',
+            majors: '智能建造,土木工程类,工程管理类,安全管理,人力资源管理类',
+            contact: '官网：http://zhaopin.cscec3b.com.cn/',
+            applyWay: '扫码1分钟快速投递，现场优先面试',
+            specialPlan: '“雏鹰计划”“顶尖生计划”',
+            status: 'closed',
+            note: '已结束，可关注后续',
+            attachment: null,
+            attachmentName: null
+        }];
+    }
+
+    // ============================================================
+    //  渲染表格（增加附件列）
+    // ============================================================
+    function renderTable() {
+        // 先自动更新状态（可能因时间变化）
+        autoUpdateStatus();
+
+        const search = document.getElementById('searchInput').value.trim().toLowerCase();
+        const status = document.getElementById('filterStatus').value;
+
+        let filtered = companies.filter(c => {
+            const matchSearch = c.name.toLowerCase().includes(search) ||
+                c.job.toLowerCase().includes(search) ||
+                (c.lectureLocation && c.lectureLocation.toLowerCase().includes(search));
+            const matchStatus = status === '' || c.status === status;
+            return matchSearch && matchStatus;
+        });
+        filtered.sort((a, b) => new Date(b.lectureTime) - new Date(a.lectureTime));
+
+        const tbody = document.getElementById('tableBody');
+        if (filtered.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="7"><div class="empty-state"><i class="fas fa-inbox"></i><p>暂无匹配的宣讲信息</p></div></td></tr>`;
+        } else {
+            tbody.innerHTML = filtered.map(c => {
+                const timeStr = formatTime(c.lectureTime);
+                const statusLabel = getStatusLabel(c.status);
+                const statusBadge = getStatusBadge(c.status);
+                const hasAttachment = c.attachment && c.attachment.length > 0;
+                return `
+                    <tr data-id="${c.id}">
+                        <td><span class="company-name">${escHtml(c.name)}</span></td>
+                        <td><span class="time-chip"><i class="far fa-calendar-alt"></i> ${timeStr}</span></td>
+                        <td>${escHtml(c.lectureLocation || '-')}</td>
+                        <td>${escHtml(c.job)}</td>
+                        <td>${hasAttachment ? `<i class="fas fa-paperclip attachment-icon" title="有附件"></i>` : '-'}</td>
+                        <td><span class="badge ${statusBadge}">${statusLabel}</span></td>
+                        <td>
+                            <div class="action-btns">
+                                <button class="btn btn-primary btn-sm" onclick="editCompany('${c.id}')"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-info btn-sm" onclick="showDetail('${c.id}')"><i class="fas fa-eye"></i></button>
+                                <button class="btn btn-danger btn-sm" onclick="deleteCompany('${c.id}')"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+        updateStats();
+        renderTimeline();
+    }
+
+    // ============================================================
+    //  时间线
+    // ============================================================
+    function renderTimeline() {
+        const container = document.getElementById('timelineContainer');
+        const sorted = [...companies].sort((a, b) => new Date(a.lectureTime) - new Date(b.lectureTime));
+        const upcoming = sorted.filter(c => new Date(c.lectureTime) >= new Date());
+        const past = sorted.filter(c => new Date(c.lectureTime) < new Date());
+        let items = [];
+        if (upcoming.length > 0) items = items.concat(upcoming.slice(0, 2));
+        if (past.length > 0 && items.length < 3) items = items.concat(past.slice(-(3 - items.length)));
+        items.sort((a, b) => new Date(a.lectureTime) - new Date(b.lectureTime));
+
+        if (items.length === 0) {
+            container.innerHTML = `<div class="no-timeline"><i class="far fa-calendar-alt"></i> 暂无宣讲安排</div>`;
+            return;
+        }
+        container.innerHTML = items.map(c => {
+            const timeStr = formatTime(c.lectureTime);
+            const statusLabel = getStatusLabel(c.status);
+            const badge = getStatusBadge(c.status);
+            const isPast = new Date(c.lectureTime) < new Date();
+            return `
+                <div class="timeline-item" style="${isPast ? 'opacity:0.7;' : ''}">
+                    <span class="time"><i class="far fa-clock"></i> ${timeStr}</span>
+                    <span class="info">
+                        <span class="company-tag">${escHtml(c.name)}</span>
+                        &nbsp;·&nbsp; ${escHtml(c.job)}
+                        ${c.lectureLocation ? `&nbsp;<span style="color:#64748b;">@${escHtml(c.lectureLocation)}</span>` : ''}
+                    </span>
+                    <span class="badge ${badge} status-badge">${statusLabel}</span>
+                </div>
+            `;
+        }).join('');
+    }
+
+    // ============================================================
+    //  统计
+    // ============================================================
+    function updateStats() {
+        document.getElementById('statCompanies').textContent = companies.length;
+        document.getElementById('statEvents').textContent = companies.length;
+        const now = new Date();
+        const upcoming = companies.filter(c => new Date(c.lectureTime) >= now).length;
+        document.getElementById('statUpcoming').textContent = upcoming;
+    }
+
+    // ============================================================
+    //  辅助
+    // ============================================================
+    function formatTime(iso) { if (!iso) return '未设置'; try { const d = new Date(iso); return d.toLocaleString('zh-CN', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' }); } catch(_){ return iso; } }
+    function getStatusLabel(status) { const map = { active:'招聘中', upcoming:'即将开始', closed:'已结束' }; return map[status] || status; }
+    function getStatusBadge(status) { const map = { active:'success', upcoming:'warning', closed:'danger' }; return map[status] || 'primary'; }
+    function escHtml(str) { if (!str) return ''; const div = document.createElement('div'); div.textContent = str; return div.innerHTML; }
+
+    // ============================================================
+    //  CRUD（含附件处理）
+    // ============================================================
+    function openAddModal() {
+        document.getElementById('modalTitle').innerHTML = '<i class="fas fa-plus-circle"></i> 新增宣讲信息';
+        document.getElementById('modalSub').textContent = '填写单位招聘与宣讲详情';
+        document.getElementById('editId').value = '';
+        document.getElementById('companyForm').reset();
+        document.getElementById('fStatus').value = 'active';
+        const tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate() + 1); tomorrow.setHours(10,0,0,0);
+        document.getElementById('fTime').value = tomorrow.toISOString().slice(0,16);
+        document.getElementById('submitBtn').innerHTML = '<i class="fas fa-save"></i> 保存';
+        // 清空附件文件名显示
+        document.getElementById('attachmentFileName').textContent = '未选择文件';
+        document.getElementById('fAttachment').value = '';
+        document.getElementById('modalOverlay').classList.add('active');
+    }
+
+    function closeModal() { document.getElementById('modalOverlay').classList.remove('active'); }
+
+    function editCompany(id) {
+        const c = companies.find(item => item.id === id);
+        if (!c) return;
+        document.getElementById('modalTitle').innerHTML = '<i class="fas fa-edit"></i> 编辑宣讲信息';
+        document.getElementById('modalSub').textContent = '修改单位招聘与宣讲详情';
+        document.getElementById('editId').value = id;
+        document.getElementById('fName').value = c.name || '';
+        document.getElementById('fStatus').value = c.status || 'active';
+        document.getElementById('fJob').value = c.job || '';
+        document.getElementById('fTime').value = c.lectureTime ? c.lectureTime.slice(0,16) : '';
+        document.getElementById('fLocation').value = c.lectureLocation || '';
+        document.getElementById('fTarget').value = c.targetAudience || '';
+        document.getElementById('fDesc').value = c.companyDesc || '';
+        document.getElementById('fBenefits').value = c.benefits || '';
+        document.getElementById('fSpecial').value = c.specialPlan || '';
+        document.getElementById('fContact').value = c.contact || '';
+        document.getElementById('fApply').value = c.applyWay || '';
+        document.getElementById('fMajors').value = c.majors || '';
+        document.getElementById('fNote').value = c.note || '';
+        // 显示现有附件名
+        if (c.attachment && c.attachment.length > 0 && c.attachmentName) {
+            document.getElementById('attachmentFileName').textContent = c.attachmentName;
+        } else {
+            document.getElementById('attachmentFileName').textContent = '未选择文件';
+        }
+        // 清空文件输入（不能预先填充）
+        document.getElementById('fAttachment').value = '';
+        document.getElementById('submitBtn').innerHTML = '<i class="fas fa-save"></i> 更新';
+        document.getElementById('modalOverlay').classList.add('active');
+    }
+
+    function saveCompany(e) {
+        e.preventDefault();
+        const id = document.getElementById('editId').value;
+        const name = document.getElementById('fName').value.trim();
+        const status = document.getElementById('fStatus').value;
+        const job = document.getElementById('fJob').value.trim();
+        const lectureTime = document.getElementById('fTime').value;
+        const lectureLocation = document.getElementById('fLocation').value.trim();
+        const targetAudience = document.getElementById('fTarget').value.trim();
+        const companyDesc = document.getElementById('fDesc').value.trim();
+        const benefits = document.getElementById('fBenefits').value.trim();
+        const specialPlan = document.getElementById('fSpecial').value.trim();
+        const contact = document.getElementById('fContact').value.trim();
+        const applyWay = document.getElementById('fApply').value.trim();
+        const majors = document.getElementById('fMajors').value.trim();
+        const note = document.getElementById('fNote').value.trim();
+
+        if (!name || !job || !lectureTime || !lectureLocation) {
+            alert('请完整填写所有必填项：单位名称、宣讲时间、宣讲地点、开放岗位。');
+            return;
+        }
+
+        // 处理附件
+        const fileInput = document.getElementById('fAttachment');
+        const file = fileInput.files[0];
+        // 如果编辑时没有选择新文件，保留原有附件（除非用户主动清空，但我们不做清空逻辑，保留之前附件）
+        // 如果有新文件，则替换
+        const processAttachment = (callback) => {
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(ev) {
+                    const base64 = ev.target.result;
+                    callback({ attachment: base64, attachmentName: file.name });
+                };
+                reader.readAsDataURL(file);
+            } else {
+                // 没有新文件，如果是编辑模式且已有附件，保留；否则置空
+                if (id) {
+                    const existing = companies.find(c => c.id === id);
+                    if (existing && existing.attachment) {
+                        callback({ attachment: existing.attachment, attachmentName: existing.attachmentName });
+                    } else {
+                        callback({ attachment: null, attachmentName: null });
+                    }
+                } else {
+                    callback({ attachment: null, attachmentName: null });
+                }
+            }
+        };
+
+        processAttachment((attachmentData) => {
+            const data = {
+                name, status, job, lectureTime, lectureLocation,
+                targetAudience, companyDesc, benefits, specialPlan,
+                contact, applyWay, majors, note,
+                attachment: attachmentData.attachment,
+                attachmentName: attachmentData.attachmentName
+            };
+
+            if (id) {
+                const idx = companies.findIndex(c => c.id === id);
+                if (idx !== -1) companies[idx] = { ...companies[idx], ...data };
+            } else {
+                data.id = Date.now() + Math.random().toString(36).slice(2, 7);
+                companies.push(data);
+            }
+            saveToStorage();
+            closeModal();
+            renderTable();
+        });
+    }
+
+    function deleteCompany(id) {
+        if (!confirm('确定删除该条宣讲信息吗？')) return;
+        companies = companies.filter(c => c.id !== id);
+        saveToStorage();
+        renderTable();
+    }
+
+    // ============================================================
+    //  查看详情（含附件下载）
+    // ============================================================
+    function showDetail(id) {
+        const c = companies.find(item => item.id === id);
+        if (!c) return;
+        const fields = [
+            { label: '单位名称', value: c.name },
+            { label: '状态', value: getStatusLabel(c.status) },
+            { label: '宣讲时间', value: formatTime(c.lectureTime) },
+            { label: '宣讲地点', value: c.lectureLocation || '-' },
+            { label: '面向对象', value: c.targetAudience || '-' },
+            { label: '开放岗位', value: c.job },
+            { label: '需求专业', value: c.majors || '-' },
+            { label: '公司简介', value: c.companyDesc || '-' },
+            { label: '福利待遇', value: c.benefits || '-' },
+            { label: '特殊人才计划', value: c.specialPlan || '-' },
+            { label: '联系方式', value: c.contact || '-' },
+            { label: '投递方式', value: c.applyWay || '-' },
+            { label: '备注', value: c.note || '-' }
+        ];
+        let html = fields.map(f => `<div class="detail-item"><span class="label">${f.label}</span><span class="value">${escHtml(f.value)}</span></div>`).join('');
+
+        // 附件显示下载按钮
+        if (c.attachment && c.attachment.length > 0) {
+            const fileName = c.attachmentName || '附件';
+            html += `
+                <div class="detail-item">
+                    <span class="label">附件</span>
+                    <span class="value">
+                        <a href="${c.attachment}" download="${escHtml(fileName)}" class="btn btn-attachment btn-sm">
+                            <i class="fas fa-download"></i> 下载 ${escHtml(fileName)}
+                        </a>
+                    </span>
+                </div>
+            `;
+        } else {
+            html += `<div class="detail-item"><span class="label">附件</span><span class="value">无</span></div>`;
+        }
+
+        document.getElementById('detailContent').innerHTML = html;
+        document.getElementById('detailOverlay').classList.add('active');
+    }
+
+    // ============================================================
+    //  导入 / 导出
+    // ============================================================
+    function exportData() {
+        const blob = new Blob([JSON.stringify(companies, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `宣讲会数据_${new Date().toISOString().slice(0,10)}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+    }
+
+    function importData(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            try {
+                const data = JSON.parse(e.target.result);
+                if (Array.isArray(data) && data.length > 0) {
+                    if (confirm(`导入 ${data.length} 条数据，覆盖当前数据？\n（确定=覆盖，取消=追加）`)) {
+                        companies = data;
+                    } else {
+                        companies = companies.concat(data);
+                    }
+                    companies = companies.map(c => { if (!c.id) c.id = Date.now() + Math.random().toString(36).slice(2,7); return c; });
+                    // 自动更新状态
+                    autoUpdateStatus();
+                    saveToStorage();
+                    renderTable();
+                    alert('导入成功！');
+                } else {
+                    alert('数据格式无效，请导入有效的 JSON 数组。');
+                }
+            } catch (_) { alert('解析 JSON 失败，请检查文件格式。'); }
+        };
+        reader.readAsText(file);
+        event.target.value = '';
+    }
+
+    // ============================================================
+    //  文件选择显示文件名
+    // ============================================================
+    document.getElementById('fAttachment').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            document.getElementById('attachmentFileName').textContent = file.name;
+        } else {
+            document.getElementById('attachmentFileName').textContent = '未选择文件';
+        }
+    });
+
+    // ============================================================
+    //  事件绑定
+    // ============================================================
+    document.getElementById('modalOverlay').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+    document.getElementById('detailOverlay').addEventListener('click', function(e) { if (e.target === this) this.classList.remove('active'); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeModal(); document.getElementById('detailOverlay').classList.remove('active'); } });
+
+    // 定时自动更新状态（每60秒检查一次）
+    setInterval(() => {
+        const changed = autoUpdateStatus();
+        if (changed) {
+            renderTable(); // 刷新界面
+        }
+    }, 60000);
+
+    // ============================================================
+    //  启动
+    // ============================================================
+    loadData();
+    renderTable();
+</script>
+
+
+</body></html>
